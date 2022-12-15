@@ -1,0 +1,27 @@
+{
+  "name": "podil",
+  "version": "0.0.1",
+  "description": "Lightwait and secure database migration tool",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/podiljs/podil.git"
+  },
+  "keywords": [
+    "node.js",
+    "sql",
+    "database",
+    "db",
+    "migration"
+  ],
+  "author": "Sasha Shpota",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/podiljs/podil/issues"
+  },
+  "homepage": "https://github.com/podiljs/podil#readme"
+}
