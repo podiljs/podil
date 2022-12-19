@@ -4,6 +4,4 @@ class Podil {
   }
 }
 
-const podil = new Podil()
-
-export default podil
+export const podil: Podil = new Podil()
