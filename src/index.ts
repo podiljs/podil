@@ -5,4 +5,5 @@ class Podil {
 }
 
 const podil = new Podil()
-podil.migrate('postgress://podil:podil@localhost:5432/podil')
+
+export default podil

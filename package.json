@@ -1,8 +1,12 @@
 {
   "name": "podil",
-  "version": "0.0.1",
-  "description": "Lightwait and secure database migration tool",
-  "main": "src/index.js",
+  "version": "0.1.0",
+  "description": "Lightweight and secure database migration tool",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "tsc && node dist/index.js",
