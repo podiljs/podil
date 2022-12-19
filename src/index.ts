@@ -1,4 +1,4 @@
-class Podil {
+export class Podil {
   migrate (connectionUrl: string): void {
     console.log('Applying migrations...')
   }
