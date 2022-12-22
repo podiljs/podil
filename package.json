@@ -1,6 +1,6 @@
 {
   "name": "podil",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "Lightweight and secure database migration tool",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -24,7 +24,8 @@
     "sql",
     "database",
     "db",
-    "migration"
+    "migration",
+    "postgres"
   ],
   "author": "Sasha Shpota",
   "license": "Apache-2.0",
@@ -33,6 +34,7 @@
   },
   "homepage": "https://github.com/podiljs/podil#readme",
   "devDependencies": {
+    "@types/pg": "^8.6.5",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "eslint": "^8.29.0",
     "eslint-config-standard-with-typescript": "^24.0.0",
@@ -40,5 +42,8 @@
     "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-promise": "^6.1.1",
     "typescript": "^4.9.4"
+  },
+  "peerDependencies": {
+    "pg": "^8.8.0"
   }
 }
