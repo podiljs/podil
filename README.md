@@ -1,5 +1,7 @@
 ## Podil [![Build](https://github.com/podiljs/podil/actions/workflows/build.yaml/badge.svg)](https://github.com/podiljs/podil/actions/workflows/build.yaml) [![npm version](https://img.shields.io/npm/v/podil.svg?style=flat)](https://www.npmjs.com/package/podil)
 
+<img src="./.github/logo.svg" align="right" width="230px" alt="Podil logo">
+
 Lightweight and secure database migration tool for Node.js and Postgres.
 
 ### How to use
