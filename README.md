@@ -3,7 +3,7 @@
 Lightweight and secure database migration tool for Node.js and Postgres.
 
 ### How to use
-Install Podil ad pg:
+Install Podil and pg:
 
 ```shell
 npm install podil pg
@@ -47,6 +47,6 @@ await podil.migrate(
 
 ### Troubleshooting
 
-Podil is in active development. If you found a bug, have a question, or
+Podil is in active development. If you found a bug, have a question or
 want to request a new feature, please
 [open an issue](https://github.com/podiljs/podil/issues).
