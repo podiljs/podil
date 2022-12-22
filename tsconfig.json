@@ -4,7 +4,7 @@
       "declaration": true,
       "esModuleInterop": true,
       "lib": ["es5", "es2015", "es2016", "dom", "esnext"],
-      "module": "es2015",
+      "module": "es2020",
       "moduleResolution": "node",
       "noImplicitAny": true,
       "noUnusedLocals": true,
