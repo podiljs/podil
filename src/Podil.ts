@@ -26,8 +26,6 @@ export class Podil {
       for (let i = 0; i < appliedScripts.length; i++) {
         const fsScriptName = fsScripts[i]
         const appliedScript = appliedScripts[i]
-        console.log('appliedScript', appliedScript)
-        console.log('fsScriptName', fsScriptName)
         if (fsScriptName !== appliedScript.name) {
           throw new Error(`Migrations mismatch: found ${appliedScript.name} in the DB ` +
             `but the next script in the filesystem is ${fsScriptName}.`)
