@@ -1,11 +1,12 @@
 ## Podil [![Build](https://github.com/podiljs/podil/actions/workflows/build.yaml/badge.svg)](https://github.com/podiljs/podil/actions/workflows/build.yaml) [![npm version](https://img.shields.io/npm/v/podil.svg?style=flat)](https://www.npmjs.com/package/podil) [![install size](https://packagephobia.com/badge?p=podil)](https://www.npmjs.com/package/podil)
 
 Lightweight and secure database migration tool for Node.js and Postgres. Podil lets
-you version your database by executing plain sql scripts automatically on application
+you version your database by executing SQL scripts automatically on application
 startup. It keeps track of what scripts have been executed and what not which lets
-you seemlesly update your database schema on every environemnt in the same way. Podil
-saves you from mistakingly break your schema by storing and verifying checkusms of every
-script that it executed.
+you seamlessly update your database schema on every environment in the same way. Podil
+saves you from mistakingly breaking your schema by storing and verifying checksums
+of every script that it executed. Podil strives at being simple and minimalistic,
+that's why it brings no dependencies except for Podil itself.
 
 
 ### How to use
@@ -41,16 +42,16 @@ in the lexicographical order.
 
 ### Configuration
 
-Podil can be configured to look for migration scripts in an arbitary location.
+Podil can be configured to look for migration scripts in an arbitrary location.
 By default, it looks for migrations in `./migrations`, you can pass a custom
-folder in the follwoing way:
+folder in the following way:
 
 ```shell
 await podil.migrate(connectionString, { migrationsDir: '/path/to/your/migrations' });
 ```
 
-It is recomended to verify checksums of your scripts on every run. However,
-you can disable checkusm verification using the `verifyChecksum` property:
+It is recommended to verify the checksums of your scripts on every run. However,
+you can disable checksum verification using the `verifyChecksum` property:
 
 ```shell
 await podil.migrate(connectionString, { verifyChecksum: false });
