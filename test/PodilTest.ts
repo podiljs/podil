@@ -90,7 +90,7 @@ describe('Podil', async () => {
       assert.fail('migration is expected to fail with checksum mismatch error')
     } catch (e) {
       // then
-      assert.strictEqual(e.toString(), 'Error: Checksum mismatch: File 01__init.sql is expected to have checksum 0000000000000000000000000000000000000000000000000000000000000000 but the calculated checksum is 06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924.')
+      assert.strictEqual((e as Error).toString(), 'Error: Checksum mismatch: File 01__init.sql is expected to have checksum 0000000000000000000000000000000000000000000000000000000000000000 but the calculated checksum is 06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924.')
     }
   })
 
@@ -121,7 +121,7 @@ describe('Podil', async () => {
       assert.fail('migration is expected to fail because the database has more migrations than there are in the file system')
     } catch (e) {
       // then
-      assert.strictEqual(e.toString(), 'Error: Migrations mismatch: the database has 3 applied scripts but found 2 scripts in the file system.')
+      assert.strictEqual((e as Error).toString(), 'Error: Migrations mismatch: the database has 3 applied scripts but found 2 scripts in the file system.')
     }
   })
 
@@ -150,7 +150,7 @@ describe('Podil', async () => {
       assert.fail('migration is expected to fail because the second script name does not mach the value in the database')
     } catch (e) {
       // then
-      assert.strictEqual(e.toString(), 'Error: Migrations mismatch: found 02__wrong_name.sql in the DB but the next script in the filesystem is 02__alter_table.sql.')
+      assert.strictEqual((e as Error).toString(), 'Error: Migrations mismatch: found 02__wrong_name.sql in the DB but the next script in the filesystem is 02__alter_table.sql.')
     }
   })
 
