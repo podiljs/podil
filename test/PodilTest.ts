@@ -54,11 +54,11 @@ describe('Podil', async () => {
        (
            name     VARCHAR(255) PRIMARY KEY,
            checksum CHAR(64) NOT NULL
-       )`,
+       )`
     )
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES($1, $2)',
-      ['01__init.sql', '06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924'],
+      ['01__init.sql', '06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924']
     )
 
     // when
@@ -78,11 +78,11 @@ describe('Podil', async () => {
        (
            name     VARCHAR(255) PRIMARY KEY,
            checksum CHAR(64) NOT NULL
-       )`,
+       )`
     )
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES($1, $2)',
-      ['01__init.sql', '0000000000000000000000000000000000000000000000000000000000000000'],
+      ['01__init.sql', '0000000000000000000000000000000000000000000000000000000000000000']
     )
     try {
       // when
@@ -102,7 +102,7 @@ describe('Podil', async () => {
        (
            name     VARCHAR(255) PRIMARY KEY,
            checksum CHAR(64) NOT NULL
-       )`,
+       )`
     )
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES ($1, $2), ($3, $4), ($5, $6)',
@@ -112,8 +112,8 @@ describe('Podil', async () => {
         '02__test1.sql',
         '0000000000000000000000000000000000000000000000000000000000000000',
         '03__test2.sql',
-        '0000000000000000000000000000000000000000000000000000000000000000',
-      ],
+        '0000000000000000000000000000000000000000000000000000000000000000'
+      ]
     )
     try {
       // when
@@ -133,7 +133,7 @@ describe('Podil', async () => {
        (
            name     VARCHAR(255) PRIMARY KEY,
            checksum CHAR(64) NOT NULL
-       )`,
+       )`
     )
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES ($1, $2), ($3, $4)',
@@ -141,8 +141,8 @@ describe('Podil', async () => {
         '01__init.sql',
         '06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924',
         '02__wrong_name.sql',
-        '0000000000000000000000000000000000000000000000000000000000000000',
-      ],
+        '0000000000000000000000000000000000000000000000000000000000000000'
+      ]
     )
     try {
       // when
@@ -162,21 +162,21 @@ describe('Podil', async () => {
        (
            name     VARCHAR(255) PRIMARY KEY,
            checksum CHAR(64) NOT NULL
-       )`,
+       )`
     )
     await client.query('CREATE TABLE test_table (name VARCHAR(255) PRIMARY KEY)')
-    await client.query(`INSERT INTO test_table values ('test data')`)
+    await client.query('INSERT INTO test_table values (\'test data\')')
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES ($1, $2)',
       [
         '01__init.sql',
-        'wrong-checksum',
-      ],
+        'wrong-checksum'
+      ]
     )
     // when
     await podil.migrate(connectionString, {
       migrationsDir: './test/PodilTest/two_migrations',
-      verifyChecksum: false,
+      verifyChecksum: false
     })
 
     // then

@@ -1,15 +1,15 @@
 import { Script } from './Script'
 
 export interface Migration {
-  connect (): Promise<void>
+  connect: () => Promise<void>
 
-  disconnect (): Promise<void>
+  disconnect: () => Promise<void>
 
-  initializeMetaTable (): Promise<void>
+  initializeMetaTable: () => Promise<void>
 
-  fetchAppliedMigrations (): Promise<Script[]>
+  fetchAppliedMigrations: () => Promise<Script[]>
 
-  executeSql (sql: string): Promise<void>
+  executeSql: (sql: string) => Promise<void>
 
-  updateVersion (fileName: string, checksum: string): Promise<void>
+  updateVersion: (fileName: string, checksum: string) => Promise<void>
 }

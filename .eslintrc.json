@@ -7,11 +7,12 @@
     "overrides": [
     ],
     "parserOptions": {
-        "project": "./tsconfig.json",
+        "project": [ "./tsconfig.json", "./test/tsconfig.json"],
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "rules": {
+        "@typescript-eslint/no-misused-promises": "off"
     },
     "ignorePatterns": ["dist/**/*"]
 }

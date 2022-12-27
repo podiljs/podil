@@ -61,7 +61,7 @@ export class Podil {
     }
   }
 
-  private calculateCheckSum(content: string): string {
+  private calculateCheckSum (content: string): string {
     return crypto.createHash('sha256').update(content).digest('hex')
   }
 }

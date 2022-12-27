@@ -1,14 +1,14 @@
 import { StartedTestContainer } from 'testcontainers/dist/test-container'
 import { GenericContainer } from 'testcontainers'
 
-export async function initDatabase(): Promise<{
-  container: StartedTestContainer,
-  connectionString: string,
+export async function initDatabase (): Promise<{
+  container: StartedTestContainer
+  connectionString: string
 }> {
   const container = await new GenericContainer('postgres:14.5-alpine3.16')
-    .withEnvironment({ 'POSTGRES_USER': 'podil' })
-    .withEnvironment({ 'POSTGRES_PASSWORD': 'podil' })
-    .withEnvironment({ 'POSTGRES_DB': 'podil' })
+    .withEnvironment({ POSTGRES_USER: 'podil' })
+    .withEnvironment({ POSTGRES_PASSWORD: 'podil' })
+    .withEnvironment({ POSTGRES_DB: 'podil' })
     .withExposedPorts(5432)
     .start()
   const port = container.getMappedPort(5432)

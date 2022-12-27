@@ -23,7 +23,7 @@ export class PgMigration implements Migration {
        podil_migrations (
         name VARCHAR(255) PRIMARY KEY,
         checksum CHAR(64) NOT NULL
-      )`,
+      )`
     )
   }
 
@@ -42,7 +42,7 @@ export class PgMigration implements Migration {
   async updateVersion (fileName: string, checksum: string): Promise<void> {
     await this.client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES($1, $2)',
-      [fileName, checksum],
+      [fileName, checksum]
     )
   }
 }
