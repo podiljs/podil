@@ -1,8 +1,12 @@
-## Podil [![Build](https://github.com/podiljs/podil/actions/workflows/build.yaml/badge.svg)](https://github.com/podiljs/podil/actions/workflows/build.yaml) [![npm version](https://img.shields.io/npm/v/podil.svg?style=flat)](https://www.npmjs.com/package/podil) [![install size](https://packagephobia.com/badge?p=podil)](https://packagephobia.com/result?p=podil)
+## Podil [![Build](https://github.com/podiljs/podil/actions/workflows/build.yaml/badge.svg)](https://github.com/podiljs/podil/actions/workflows/build.yaml) [![npm version](https://img.shields.io/npm/v/podil.svg?style=flat)](https://www.npmjs.com/package/podil) [![install size](https://packagephobia.com/badge?p=podil)](https://www.npmjs.com/package/podil)
 
-<img src="https://raw.githubusercontent.com/podiljs/podil/main/.github/logo.svg" align="right" width="125px" alt="Podil logo">
+Lightweight and secure database migration tool for Node.js and Postgres. Podil lets
+you version your database by executing plain sql scripts automatically on application
+startup. It keeps track of what scripts have been executed and what not which lets
+you seemlesly update your database schema on every environemnt in the same way. Podil
+saves you from mistakingly break your schema by storing and verifying checkusms of every
+script that it executed.
 
-Lightweight and secure database migration tool for Node.js and Postgres.
 
 ### How to use
 Install Podil and pg:
@@ -37,14 +41,19 @@ in the lexicographical order.
 
 ### Configuration
 
-By default, Podil looks for migrations in `./migrations`, you can pass a
-custom folder for migrations as a second argument to the `migrate()` call:
+Podil can be configured to look for migration scripts in an arbitary location.
+By default, it looks for migrations in `./migrations`, you can pass a custom
+folder in the follwoing way:
 
 ```shell
-await podil.migrate(
-  'postgres://podil:podil@localhost:5432/podil',
-  '/app/sql/migrations'
-);
+await podil.migrate(connectionString, { migrationsDir: '/path/to/your/migrations' });
+```
+
+It is recomended to verify checksums of your scripts on every run. However,
+you can disable checkusm verification using the `verifyChecksum` property:
+
+```shell
+await podil.migrate(connectionString, { verifyChecksum: false });
 ```
 
 ### Troubleshooting
