@@ -70,7 +70,7 @@ describe('Podil', async () => {
        )`
     )
     await client.query('CREATE TABLE test_table (name VARCHAR(255) PRIMARY KEY)')
-    await client.query(`INSERT INTO test_table values ('test data')`)
+    await client.query('INSERT INTO test_table values (\'test data\')')
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES($1, $2)',
       ['01__init.sql', '06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924']
