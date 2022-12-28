@@ -32,7 +32,6 @@ export class Podil {
         }
         if (verifyChecksum) {
           const migrationScript = fs.readFileSync(path.join(migrationsAbsolutePath, fsScriptName)).toString()
-          await migration.executeSql(migrationScript)
           const checksum = this.calculateCheckSum(migrationScript)
           if (checksum !== appliedScript.checksum) {
             throw new Error(`Checksum mismatch: File ${fsScriptName} is expected to have checksum ` +

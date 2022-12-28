@@ -36,6 +36,19 @@ describe('Podil', async () => {
     assert.strictEqual(nameFromDb, 'test data')
   })
 
+  it('should apply migration only once', async () => {
+    // given
+    await podil.migrate(connectionString, { migrationsDir: './test/PodilTest/single_migration' })
+
+    // when running the second time nothing should happen
+    await podil.migrate(connectionString, { migrationsDir: './test/PodilTest/single_migration' })
+
+    // then
+    const result = await client.query('SELECT name FROM test_table')
+    const nameFromDb = result.rows[0].name
+    assert.strictEqual(nameFromDb, 'test data')
+  })
+
   it('should apply multiple migrations', async () => {
     // when
     await podil.migrate(connectionString, { migrationsDir: './test/PodilTest/two_migrations' })
@@ -56,6 +69,8 @@ describe('Podil', async () => {
            checksum CHAR(64) NOT NULL
        )`
     )
+    await client.query('CREATE TABLE test_table (name VARCHAR(255) PRIMARY KEY)')
+    await client.query('INSERT INTO test_table values (\'test data\')')
     await client.query(
       'INSERT INTO podil_migrations(name, checksum) VALUES($1, $2)',
       ['01__init.sql', '06ea2d756243a1e96ebf74d971812d3fe678b6888108bc44b929ae0e560f0924']
@@ -65,9 +80,9 @@ describe('Podil', async () => {
     await podil.migrate(connectionString, { migrationsDir: './test/PodilTest/two_migrations' })
 
     // then
-    const result = await client.query('SELECT name FROM test_table')
-    const nameFromDb = result.rows[0].name
-    assert.strictEqual(nameFromDb, 'test data')
+    const result = await client.query('SELECT test FROM test_table')
+    const nameFromDb = result.rows[0].test
+    assert.strictEqual(nameFromDb, 'value from the second script')
   })
 
   it('should fail to apply migration when checksum check fails', async () => {
