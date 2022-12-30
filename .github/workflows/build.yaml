@@ -17,3 +17,7 @@ jobs:
         run: npm run lint
       - name: Test
         run: npm run test
+      - name: Coverage
+        npm install -g nyc && curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov
+        nyc npm run test
+        ./codecov
