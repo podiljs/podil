@@ -18,7 +18,6 @@ jobs:
       - name: Test
         run: |
          npx nyc --reporter=lcov npm run test
-         ./codecov
       - name: Covergae
         uses: coverallsapp/github-action@master
         with:
