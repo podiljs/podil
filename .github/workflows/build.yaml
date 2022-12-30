@@ -18,6 +18,7 @@ jobs:
       - name: Test
         run: npm run test
       - name: Coverage
-        run: npm install -g nyc && curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov
-        run: nyc npm run test
-        run: ./codecov
+        run: |
+         npm install -g nyc && curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov
+         nyc npm run test
+         ./codecov
