@@ -209,7 +209,7 @@ describe('Podil', async () => {
       // then
       assert.strictEqual(
         (e as Error).toString(),
-        `Error: File '002__wrong_extension.xls' cannot be executed. Make sure the directory with migrations contains only '.sql' files.`,
+        'Error: File \'002__wrong_extension.xls\' cannot be executed. Make sure the directory with migrations contains only \'.sql\' files.'
       )
     }
   })

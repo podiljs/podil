@@ -18,10 +18,10 @@ export class Podil {
       const appliedScripts: Script[] = await migration.fetchAppliedMigrations()
       const migrationsAbsolutePath = path.resolve(migrationsDir)
       const files = fs.readdirSync(migrationsAbsolutePath)
-      for (let file of files) {
+      for (const file of files) {
         if (!file.toLowerCase().endsWith('.sql')) {
           throw new Error(
-            `File '${file}' cannot be executed. Make sure the directory with migrations contains only '.sql' files.`,
+            `File '${file}' cannot be executed. Make sure the directory with migrations contains only '.sql' files.`
           )
         }
       }
