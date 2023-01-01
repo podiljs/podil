@@ -18,6 +18,13 @@ export class Podil {
       const appliedScripts: Script[] = await migration.fetchAppliedMigrations()
       const migrationsAbsolutePath = path.resolve(migrationsDir)
       const files = fs.readdirSync(migrationsAbsolutePath)
+      for (let file of files) {
+        if (!file.toLowerCase().endsWith('.sql')) {
+          throw new Error(
+            `File '${file}' cannot be executed. Make sure the directory with migrations contains only '.sql' files.`,
+          )
+        }
+      }
       const fsScripts = files.sort((a, b) => a.localeCompare(b))
       if (fsScripts.length < appliedScripts.length) {
         throw new Error(`Migrations mismatch: the database has ${appliedScripts.length}` +
