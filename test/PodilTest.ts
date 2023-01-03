@@ -199,4 +199,18 @@ describe('Podil', async () => {
     const nameFromDb = result.rows[0].test
     assert.strictEqual(nameFromDb, 'value from the second script')
   })
+
+  it('should fail to apply migration given wrong script extension', async () => {
+    try {
+      // given, when
+      await podil.migrate(connectionString, { migrationsDir: './test/PodilTest/wrong_extensions' })
+      assert.fail('migration is expected to fail because the second script has wrong extension')
+    } catch (e) {
+      // then
+      assert.strictEqual(
+        (e as Error).toString(),
+        'Error: File \'002__wrong_extension.xls\' cannot be executed. Make sure the directory with migrations contains only \'.sql\' files.'
+      )
+    }
+  })
 })
