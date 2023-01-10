@@ -24,6 +24,9 @@ export class Podil {
             `File '${file}' cannot be executed. Make sure the directory with migrations contains only '.sql' files.`
           )
         }
+        if (file.length > 255) {
+          throw new Error(`Script filename exceeds the allowed 255 symbols limit: ${file}`)
+        }
       }
       const fsScripts = files.sort((a, b) => a.localeCompare(b))
       if (fsScripts.length < appliedScripts.length) {
