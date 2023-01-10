@@ -1,7 +1,7 @@
 ## Podil [![Build](https://github.com/podiljs/podil/actions/workflows/build.yaml/badge.svg)](https://github.com/podiljs/podil/actions/workflows/build.yaml) [![Coverage Status](https://coveralls.io/repos/github/podiljs/podil/badge.svg?branch=main)](https://coveralls.io/github/podiljs/podil?branch=main) [![npm version](https://img.shields.io/npm/v/podil.svg?style=flat)](https://www.npmjs.com/package/podil) [![install size](https://packagephobia.com/badge?p=podil)](https://www.npmjs.com/package/podil)
 
 Lightweight and secure database migration tool for Node.js and Postgres. Podil lets
-you version your database by executing SQL scripts automatically on application
+you version your database schema by executing SQL scripts automatically on application
 startup. It keeps track of what scripts have been executed and what not which lets
 you seamlessly update your database schema on every environment in the same way. Podil
 saves you from mistakingly breaking your schema by storing and verifying checksums
