@@ -1,6 +1,6 @@
 import { Client } from 'pg'
-import { Script } from './Script'
-import { Migration } from './Migration'
+import type { Script } from './Script'
+import type { Migration } from './Migration'
 
 export class PgMigration implements Migration {
   private readonly client: Client

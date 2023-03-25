@@ -1,4 +1,4 @@
-import { Script } from './Script'
+import type { Script } from './Script'
 
 export interface Migration {
   connect: () => Promise<void>
