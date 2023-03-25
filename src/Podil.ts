@@ -1,10 +1,10 @@
 import { PgMigration } from './db/PgMigration'
 import path from 'path'
 import fs from 'fs'
-import { Script } from './db/Script'
+import type { Script } from './db/Script'
 import crypto from 'crypto'
-import { Migration } from './db/Migration'
-import { PodilConfig } from './PodilConfig'
+import type { Migration } from './db/Migration'
+import type { PodilConfig } from './PodilConfig'
 
 export class Podil {
   async migrate (connectionUrl: string, config?: PodilConfig): Promise<void> {

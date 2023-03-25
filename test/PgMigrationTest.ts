@@ -1,8 +1,8 @@
-import { StartedTestContainer } from 'testcontainers/dist/test-container'
 import { initDatabase } from './config'
 import { Client } from 'pg'
 import assert from 'assert'
 import { PgMigration } from '../src/db/PgMigration'
+import type { StartedTestContainer } from 'testcontainers'
 
 describe('PgMigration', async () => {
   let container: StartedTestContainer
@@ -22,9 +22,13 @@ describe('PgMigration', async () => {
     await client.query('DROP TABLE IF EXISTS execute_script_test')
   })
 
-  afterEach('Close connection', async () => await client.end())
+  afterEach('Close connection', async () => {
+    await client.end()
+  })
 
-  after('Stop DB', async () => await container.stop())
+  after('Stop DB', async () => {
+    await container.stop()
+  })
 
   it('initializeMetaTable', async () => {
     const migration = new PgMigration(connectionString)

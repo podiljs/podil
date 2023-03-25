@@ -1,5 +1,4 @@
-import { StartedTestContainer } from 'testcontainers/dist/test-container'
-import { GenericContainer } from 'testcontainers'
+import { GenericContainer, type StartedTestContainer } from 'testcontainers'
 
 export async function initDatabase (): Promise<{
   container: StartedTestContainer

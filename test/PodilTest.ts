@@ -1,8 +1,8 @@
-import { StartedTestContainer } from 'testcontainers/dist/test-container'
 import { initDatabase } from './config'
 import { podil } from '../src'
 import { Client } from 'pg'
 import assert from 'assert'
+import type { StartedTestContainer } from 'testcontainers'
 
 describe('Podil', async () => {
   let container: StartedTestContainer
@@ -15,7 +15,7 @@ describe('Podil', async () => {
     connectionString = config.connectionString
   })
 
-  after('Stop DB container', async () => await container.stop())
+  after('Stop DB container', async () => { await container.stop() })
 
   beforeEach('Init connection and drop all tables', async () => {
     client = new Client({ connectionString })
@@ -24,7 +24,7 @@ describe('Podil', async () => {
     await client.query('DROP TABLE IF EXISTS test_table')
   })
 
-  afterEach('Close connection', async () => await client.end())
+  afterEach('Close connection', async () => { await client.end() })
 
   it('should apply migration', async () => {
     // when
