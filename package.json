@@ -1,6 +1,6 @@
 {
   "name": "podil",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "Lightweight and secure database migration tool",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
